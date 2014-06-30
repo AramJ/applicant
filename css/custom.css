@@ -1,0 +1,226 @@
+.backgroundColor
+{
+    background-color: #bebebe;
+}
+.img-responsive
+{
+    height: 175px;
+}
+.borders
+{
+    border: 3px dashed #1e435d;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+    padding-bottom: 400px;
+}
+.image-align
+{
+    float: right;
+}
+.height
+{
+    margin-top: 10px;
+}
+.bottum
+{
+    margin-bottom: 10px;
+}
+.middleForm
+{
+    text-align: center;
+    margin-top: 8px;
+    padding: 10px 10px;
+    min-height: 100%;
+}
+.font_model
+{
+    font-size: 16px;
+    font-family: 'b zar', 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+}
+.font_modeltitr
+{
+    font-size: 18px;
+    float: right;
+    margin-right: 30%;
+    margin-top: 10px;
+    font-family:  'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+}
+.font_sidetext
+{
+    font-size: 16px;
+    font-family: 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    padding-left: 1px;
+    padding-right: 1px;
+
+}
+.height-font-link
+{
+    margin-top: 15px;
+}
+.margin-cancel-button
+{
+    margin-left: 10px;
+
+}
+.margin-register-button
+{
+    margin-left: 103px;
+}
+
+.nav-tabs {
+    border-bottom: 3px solid #a6adaf;
+}
+.nav-tabs > li {
+    float: right;
+    margin-bottom: -1px;
+}
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+.nav-tabs > li > a:hover {
+    border-color: #eee #eee #ddd;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.font_dropdown
+{
+      font-size: 18px;
+      font-family: 'b zar', 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+}
+.samt
+{
+    float: right;
+}
+.place_dropdown
+{
+    margin-right: 60px;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+
+.place_button
+{
+    margin-right: 40px;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+.place_button_dlt
+{
+    margin-right: 10px;
+    margin-top: 60px;
+    margin-left: 100px;
+}
+.place_dropdown2
+{
+    margin-right: 320px;
+    margin-top: 60px;
+    margin-left: 30px;
+
+}
+.place_table2.table
+{
+    position: absolute;
+    margin-right: 0px;
+    margin-top: 120px;
+    margin-left: 90px;
+    width: 10%;
+
+}
+.place_table1.table
+{
+    position: absolute;
+    margin-right: 40px;
+    margin-top: 120px;
+    margin-left: 738px;
+    width: 10%;
+    float: right;
+}
+.place_button2
+{
+    margin-right: 30px;
+    margin-top: 60px;
+    margin-left: 20px;
+}
+.place_button_dlt2
+{
+    margin-right: 10px;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+.font_model_chng
+{
+    font-size: 15px;
+    font-family: 'b zar', 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    margin-left: 20px;
+
+}
+.chng-btn
+{
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.user_acpt.table
+{
+    width: 80%;
+    margin-top: 10px;
+    margin-right: 30px;
+    float: right;
+
+}
+.font_model_srch_name
+{
+    position: relative;
+    font-size: 15px;
+    font-family: 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 5px;
+    text-align: right;
+    float: right;
+}
+.font_model_srch_day
+{
+    position: relative;
+    font-size: 15px;
+    font-family: 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 10px;
+    text-align: right;
+    float: right;
+}
+.font_model_srch_crs
+{
+    position: relative;
+    font-size: 15px;
+    font-family: 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 10px;
+    text-align: right;
+    float: right;
+}
+.place_btn_srch
+{
+    position: relative;
+    font-size: 15px;
+    font-family: 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    margin-top: 30px;
+    margin-left: 100px;
+    margin-right: 10px;
+    text-align: right;
+    float: right;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
