@@ -10,7 +10,7 @@ class Login_model extends CI_Model
 
     public static function checkLogin($melliCode, $password,$con)
     {
-        $result = $con->get_where('usertb',array('melliCode' => $melliCode , 'password' => $password));
+        $result = $con->get_where('usertb',array('melli_code' => $melliCode , 'password' => $password));
         if($result->num_rows>0)
         {
             return $result;

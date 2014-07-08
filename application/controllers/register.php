@@ -7,7 +7,6 @@ class Register extends CI_Controller {
         $this->load->helper('url');
         $this->load->view('header');
         $this->load->view('register');
-        echo "echo";
     }
 
     public function submited_form(){

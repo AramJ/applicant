@@ -14,21 +14,19 @@ class Login extends CI_Controller {
         $this->load->library('encrypt');
         $this->load->library('Hash');
         $this->load->library('session');
-        $cheking = $this->input->post('LoginType');
-        $melliCode = $this->input->post('melliCode');
+        $melliCode = $this->input->post('username');
         $password = $this->input->post('password');
         $encryptedPassword = Hash::create('sha256',$password,$this->config->item('encryption_key'));
         $encryptedPassword = $this->encrypt->sha1($encryptedPassword);
-        echo $encryptedPassword;
         $result = $this->login_model->checkLogin($melliCode,$encryptedPassword,$this->db);
         if($result != false)
         {
             foreach($result->result() as $row)
             {
                 $data = array(
-                    'melliCode' => $row->melliCode,
+                    'melli_code' => $row->melli_code,
                     'name' => $row->name,
-                    'email' => $row->email
+                    'isAdmin' => $row->admin_user
                 );
                 $this->session->set_userdata($data);
             }

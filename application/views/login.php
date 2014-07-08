@@ -7,29 +7,28 @@
  */ ?>
 <script>
     $(document).ready(function(){
-
+        $("#register_page").click(function(){
+            window.location = "<?php //echo base_url();?>index.php/register/";
+            return false;
+        });
         $("#login_btn").click(function(){
-            var check_log_user = document.forms["login_form"]["LoginType"].value;
-            var shenasnameNumber = document.forms["login_form"]["username"].value;
-            var password = document.forms["login_form"]["password"].value;
+            var melliCode = $("#username").val();
+            var password = $("#password").val();
             request = $.ajax({
                 url:"<?php echo base_url(); ?>index.php/login/checkLogin",
                 type:"POST",
-                data:{"LoginType" :check_log_user,"username":shenasnameNumber, "password":password},
+                data:{"username":melliCode, "password":password},
                 success:function(result){
-                    echo result;
                     if(result == "no")
                     {
-                        document.getElementById("login_notif").innerHTML = "نام کاربری / رمز عبور اشتباه می باشد";
+                        $.notify( "نام کاربری / رمز عبور اشتباه می باشد","error");
                     }
                     else{
-                        if(check_log_user == "user")
-                        {
-                            window.location.href = "<?php echo base_url(); ?>index.php/admin_main";
-                        }
-                        else{
-                            window.location.href = "<?php echo base_url(); ?>index.php/main";
-                        }
+                        $.notify( "نام کاربری و کلمه عبور صحیح می باشد، لطفا چند لحظه صبر نمایید تا به صفحه داشبورد منتقل شوید","success");
+                        setTimeout(function(){
+                            window.location = "<?php echo base_url();?>index.php/main";
+                        }, 2000);
+
                     }
                 },
                 beforeSend:function()
