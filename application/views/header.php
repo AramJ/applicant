@@ -14,7 +14,6 @@
     <!--css starts form here-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/custom.css" type="text/css"/>
-    <link rel="stylesheet" href="<?php echo base_url();?>css/TableTools.css" type="text/css"/>
     <!--[if lt IE 9]>
     <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> -->
     <!--[endif]-->
@@ -29,13 +28,13 @@
 
 <body class="backgroundColor">
 <div class="container">
-    <header class="row allHeader">
-        <div class="col-xs-12 col-sm-12 col-md-3 image-align">
-                <a href="<?php echo base_url();?>">
-                    <img class="img-responsive" src="<?php echo base_url();?>img/logo.png" alt="university Logo"/>
-                </a>
-        </div>
+    <header class="row">
         <div class="headerTitle hidden-xs hidden-sm col-md-9">
-
+            سامانه درخواست تدریس اساتید
+        </div>
+        <div class="col-xs-12 col-md-3">
+                <a href="<?php echo base_url();?>" >
+                    <img class="img-responsive center-block" src="<?php echo base_url();?>img/logo.png" alt="university Logo"/>
+                </a>
         </div>
     </header>

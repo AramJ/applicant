@@ -1,3 +1,11 @@
+
+.headerTitle
+{
+    font-family: tahoma;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 65px;
+}
 .backgroundColor
 {
     background-color: #bebebe;
@@ -12,10 +20,6 @@
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 10px;
-}
-.image-align
-{
-    float: right;
 }
 .height
 {
