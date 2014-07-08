@@ -28,13 +28,13 @@
 
 <body class="backgroundColor">
 <div class="container">
-    <header class="row">
-        <div class="headerTitle hidden-xs hidden-sm col-md-9">
+    <header class="row backgroundHead">
+        <div class="headerTitle hidden-xs hidden-sm col-md-7">
             سامانه درخواست تدریس اساتید
         </div>
-        <div class="col-xs-12 col-md-3">
+        <div class="col-xs-12 col-md-5">
                 <a href="<?php echo base_url();?>" >
-                    <img class="img-responsive center-block" src="<?php echo base_url();?>img/logo.png" alt="university Logo"/>
+                    <img class="img-responsive center-block" style="height: 110px" src="<?php echo base_url();?>img/logo_fa.png" alt="university Logo"/>
                 </a>
         </div>
     </header>

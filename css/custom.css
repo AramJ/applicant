@@ -1,3 +1,14 @@
+@font-face
+{
+    font-family: iran_nastaliq;
+    src: url('../fonts/IranNastaliq.ttf');
+}
+
+body
+{
+    background: url('../Images/body_jahad_pattern.png' ) repeat 17px top, url('../Images/body_bg.png' ) repeat-x center top;
+    -pie-background: url('../Images/body_jahad_pattern.png' ) repeat 17px top, url('../Images/body_bg.png' ) repeat-x center top;
+}
 .loginForm
 {
     margin-left: 0px;
@@ -10,9 +21,11 @@
 .headerTitle
 {
     font-family: tahoma;
-    font-size: 40px;
-    text-align: center;
-    margin-top: 65px;
+    font-size: 50px;
+    text-align: right;
+    margin-top: 20px;
+    color: white;
+    font-family: iran_nastaliq;
 }
 .contentHeader
 {
@@ -22,7 +35,16 @@
 }
 .backgroundColor
 {
-    background-color: #AA9239;
+    background: url('../img/body_jahad_pattern.png' ) repeat 17px top, url('../img/body_bg.png' ) repeat-x center top;
+    -pie-background: url('../img/body_jahad_pattern.png' ) repeat 17px top, url('../img/body_bg.png' ) repeat-x center top;
+}
+.backgroundHead
+{
+    position: relative;
+    width: 100%;
+    z-index: 7;
+    background: url('../img/header_bg.png' ) no-repeat center top;
+    height: 130px;
 }
 .img-responsive
 {
@@ -30,12 +52,13 @@
 }
 .borders
 {
-    border: 3px solid #1e435d;
-    margin-top: 10px;
-    background-color: #609732 ;
+    border: 3px solid #aed2ff;
+    margin-top: 100px;
+    background-color: #0b3365 ;
     -webkit-border-radius: 40px;
     -moz-border-radius: 40px;
     border-radius: 40px;
+    color: white;
 }
 .height
 {
