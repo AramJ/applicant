@@ -6,8 +6,8 @@
  * Time: 4:34 PM
  */ ?>
 
-
 </div>
+
 <div class="">
     <div class="row">
         <div>
@@ -20,45 +20,40 @@
         </div>
     </div>
 
-    <div class="borders">
-        <div class="row samt">
+    <div class="borders" <div class="borders"
+        style="
+            height: 600px;
+        ">
 
-            <div class="dropdown">
-                <button class="font_dropdown btn btn-default dropdown-toggle place_dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    روزها
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                </ul>
+
+        <form method="post" action="<?php base_url(); ?>/index.php/main/add-day">
+            <div class="row samt">
+                <div class="dropdown font_dropdown place_dropdown dropdown-toggle">
+
+                    <input list="days" name="day">
+                    <datalist id="days">
+                        <option value="Saturday">
+                        <option value="Monday">
+                        <option value="Tuesday">
+                        <option value="Wednesday">
+                        <option value="Thursday">
+                        <option value="Friday">
+                    </datalist>
+                </div>
             </div>
 
-        </div>
-        <div class="row samt">
-            <button class=" btn btn-default font_dropdown place_button" type="submit">انتخاب</button>
-        </div>
-        <div class="row samt">
-            <button class=" btn btn-default font_dropdown place_button_dlt" type="submit">حذف</button>
-        </div>
+            <div class="row samt">
+                <button class=" btn btn-default font_dropdown place_button" type="submit">انتخاب</button>
+            </div>
+            <div class="row samt">
+                <button class=" btn btn-default font_dropdown place_button_dlt" type="submit">حذف</button>
+            </div>
+        </form>
 
         <div class="row samt">
 
-            <div class="dropdown place_dropdown2">
-                <button class="font_dropdown btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    درس ها
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu " role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                </ul>
+            <div class="place_dropdown2 font_dropdown">
+                <input name="course" type="text" style="text-align: right;"  placeholder="نام درس" >
             </div>
 
         </div>
@@ -91,6 +86,8 @@
         </div>
 
     </div>
+
+
 
 </div>
 </body>

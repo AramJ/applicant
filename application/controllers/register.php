@@ -7,19 +7,20 @@ class Register extends CI_Controller {
         $this->load->helper('url');
         $this->load->view('header');
         $this->load->view('register');
+        echo "echo";
     }
+
     public function submited_form(){
         $this->load->model("register_model");
         $this->load->library('encrypt');
         $this->load->library('Hash');
         $name = $this->input->post('name');
         $family = $this->input->post('family');
-        $password = $this->input->post('password');
-        $father_name = $this->input->post('fatherName');
+        $fatherName = $this->input->post('fatherName');
         $shenasnameNumber = $this->input->post('shenasnameNumber');
         $birthDate = $this->input->post('birthDate');
         $birthLocation = $this->input->post('birthLocation');
-        $shenasnamePlace = $this->input->post('shenasnamePlace');//////
+        $shenasnamePlace = $this->input->post('shenasnamePlace');
         $religion = $this->input->post('religion');
         $marriageSituation = $this->input->post('marriageSituation');
         $nezamVazifeSituation = $this->input->post('nezamVazifeSituation');
@@ -33,14 +34,28 @@ class Register extends CI_Controller {
         $telWork = $this->input->post('telWork');
         $mobile = $this->input->post('mobile');
         $teachingMaqtaa = $this->input->post('teachingMaqtaa');
-        $password = $this->input->post('password');
+        //$password = $this->input->post('password');
 
-        $encryptedPassword = Hash::create('sha256',$password,$this->config->item('encryption_key'));
-        $encryptedPassword = $this->encrypt->sha1($encryptedPassword);
-        $result = $this->register_model->add_Register($name, $family, ,$encryptedPassword,$email,$mobile,$birth_date,$this->db);
+        //$encryptedPassword = Hash::create('sha256',$password,$this->config->item('encryption_key'));
+        //$encryptedPassword = $this->encrypt->sha1($encryptedPassword);
+        $result = $this->register_model->add_Register($name, $family, $fatherName, $shenasnameNumber, $birthDate, $birthLocation, $shenasnamePlace, $religion, $marriageSituation, $nezamVazifeSituation, $melliCode, $elmiSituation, $teachingGroup , $telHome, $email, $workingAdd, $livingAdd, $telWork, $mobile, $teachingMaqtaa,$this->db);
         if($result == true)
-            echo "yes";
+        {
+            ?>
+            <script>
+                alert("Your registration is successfuly done!\nPlease wait till your confirmation be in your mail");
+            </script>
+<?php
+            $this->load->helper('url');
+            redirect('/login/','refresh');
+
+        }
         else
+        {
             echo "no";
+            $this->load->helper('url');
+            redirect('/register/','refresh');
+        }
+
     }
 }
