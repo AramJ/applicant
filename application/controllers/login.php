@@ -10,8 +10,8 @@ class Login extends CI_Controller {
 
     function checkLogin()
     {
-        echo $this->load->model('login_model');
-        echo $this->load->library('encrypt');
+        $this->load->model('login_model');
+        $this->load->library('encrypt');
         $this->load->library('Hash');
         $this->load->library('session');
         $cheking = $this->input->post('LoginType');

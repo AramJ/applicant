@@ -43,29 +43,30 @@
         });
     });
 </script>
-</div>
-<div class="borders" xmlns="http://www.w3.org/1999/html">
-    <p class="font_modeltitr col-lg-2">وارد شدن به سیستم</p><br/>
-    <form name="login_form" role="form" action="<?php echo base_url(); ?>index.php/login/checkLogin/" method="POST">
-        <div class="row  middleForm">
-            <div class="col-lg-5 col-lg-offset-3">
-                <div class="col-lg-2 col-lg-offset-3">
-                    <div class="btn-group radio-inline"  data-toggle="buttons">
-                        <label class="font_sidetext">
-                            کاربر
-                            <input type="radio" name="LoginType" value="user">
-                        </label>
-                        <label class="font_sidetext">
-                            ادمین
-                            <input type="radio" name="LoginType" value="admin">
-                        </label>
+<div class="row borders">
+    <div class="container">
+        <div class="row loginForm">
+            <p class="col-xs-12 contentHeader">ورود به سیستم</p>
+        </div>
+        <div class="row loginForm">
+            <form name="login_form" role="form">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr" for="username">نام کاربری</label>
+                        <input class="form-control col-xs-7 rtlText font-model" type="text" id="username" placeholder="لطفا کد ملی خود را وارد نمایید">
                     </div>
                 </div>
-                <div><input type="text" name="melliCode" class= "col-lg-offset-3 col-lg-6 height font_model" placeholder="نام کاربری"><label class="font_sidetext height col-lg-2">نام کاربری</label></div>
-                <div><input type="text" name="password" class= "col-lg-offset-3 col-lg-6 height font_model" placeholder="رمزعبور"><label class="font_sidetext height col-lg-2">رمز عبور</label></div>
-                <button type="submit" class= "col-lg-offset-3 col-lg-3 height bottum font_model  btn btn-default" id="login_btn">ورود</button>
-                <a class= "col-lg-3 height bottum font_model height-font-link" href="<?php echo base_url();?>index.php/register">ثبت نام</a>
-            </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr" for="password">رمز عبور</label>
+                        <input class="form-control col-xs-7 rtlText font-model" type="password" id="password" placeholder="لطفا کلمه عبور خود را در اینجا وارد کنید">
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary col-xs-2 col-xs-offset-4 font-model" id="login_btn">ورود</button>
+                    <button class="btn btn-warning font-model" id="register_page"">ثبت نام</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

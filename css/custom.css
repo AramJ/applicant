@@ -1,4 +1,12 @@
-
+.loginForm
+{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.rtlText
+{
+    text-align: right;
+}
 .headerTitle
 {
     font-family: tahoma;
@@ -6,9 +14,15 @@
     text-align: center;
     margin-top: 65px;
 }
+.contentHeader
+{
+    text-align: center;
+    font-family: tahoma;
+    font-size: 24px;
+}
 .backgroundColor
 {
-    background-color: #bebebe;
+    background-color: #AA9239;
 }
 .img-responsive
 {
@@ -16,10 +30,12 @@
 }
 .borders
 {
-    border: 3px dashed #1e435d;
-    margin-left: 20%;
-    margin-right: 20%;
+    border: 3px solid #1e435d;
     margin-top: 10px;
+    background-color: #609732 ;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
 }
 .height
 {
@@ -36,18 +52,32 @@
     padding: 10px 10px;
     min-height: 100%;
 }
-.font_model
+.form-group
 {
-    font-size: 16px;
-    font-family: 'b zar', 'b nazanin', 'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    margin-top:10px;
 }
-.font_modeltitr
+.form-control
 {
-    font-size: 18px;
-    float: right;
-    margin-right: 30%;
-    margin-top: 10px;
-    font-family:  'b homa', 'titr', 'aradKodak', 'b koodak', 'arial';
+    width: 58.33333%;
+}
+
+.btn
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+.font-model
+{
+    font-size: 14px;
+    font-family: 'tahoma';
+}
+.font-model-titr
+{
+    font-size: 14px;
+    margin-top: 5px;
+    font-family:  'tahoma';
 }
 .font_sidetext
 {
