@@ -23,12 +23,22 @@ class Login extends CI_Controller {
         {
             foreach($result->result() as $row)
             {
-                $data = array(
-                    'melli_code' => $row->melli_code,
-                    'name' => $row->name,
-                    'isAdmin' => $row->admin_user
-                );
-                $this->session->set_userdata($data);
+                if($row->is_approved == 1)
+                {
+                    $data = array(
+                        'melli_code' => $row->melli_code,
+                        'name' => $row->name,
+                        "family" => $row->family,
+                        "gender" => $row->gender,
+                        'isAdmin' => $row->admin_user
+                    );
+                    $this->session->set_userdata($data);
+                }
+                else
+                {
+                    echo "not approved";
+                    return;
+                }
             }
 
             echo "yes";
