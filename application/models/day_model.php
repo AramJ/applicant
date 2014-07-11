@@ -3,9 +3,9 @@
 
 class Day_model extends CI_Model
 {
-    public static function get_courses($con)
+    public static function get_courses($teachingGroup,$con)
     {
-        $result = $con->get_where('coursetb');
+        $result = $con->get_where('coursetb',array('amozeshi_group_name' => $teachingGroup));
         if($result->num_rows>0)
         {
             return $result;

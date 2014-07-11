@@ -26,6 +26,7 @@ class Main extends CI_Controller {
         $this->load->model('day_model');
         $this->load->library('session');
         $melliCode = $this->session->userdata('melli_code');
+        $teachingGroup = $this->session->userdata('teaching_group');
         $name = $this->session->userdata('name') . " " . $this->session->userdata('family');
         $gender = $this->session->userdata('gender');
         $this->load->model('day_model');
@@ -43,7 +44,7 @@ class Main extends CI_Controller {
                     );
             }
         }
-        $courses = $this->day_model->get_courses($this->db);
+        $courses = $this->day_model->get_courses($teachingGroup,$this->db);
         $dataCourses = array();
         if($courses!=false)
         {

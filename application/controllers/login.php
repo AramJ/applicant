@@ -38,7 +38,8 @@ class Login extends CI_Controller {
                         'name' => $row->name,
                         "family" => $row->family,
                         "gender" => $row->gender,
-                        'isAdmin' => $row->admin_user
+                        'isAdmin' => $row->admin_user,
+                        'teaching_group' => $row->teaching_group
                     );
                     $this->session->set_userdata($data);
                 }
