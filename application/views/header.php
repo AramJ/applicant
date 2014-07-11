@@ -30,7 +30,7 @@
 <div class="container">
     <header class="row backgroundHead">
         <div class="headerTitle hidden-xs hidden-sm col-md-7">
-            سامانه درخواست تدریس اساتید
+            سامانه &nbsp درخواست &nbsp تدریس &nbsp اساتید
         </div>
         <div class="col-xs-12 col-md-5">
                 <a href="<?php echo base_url();?>" >

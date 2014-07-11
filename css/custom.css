@@ -17,6 +17,16 @@ body
 .rtlText
 {
     text-align: right;
+    direction: rtl;
+}
+.headerWelcome
+{
+    margin-top: 50px;
+    color: rgb(170, 0, 0);
+    font-size: 16px;
+    font-family: 'tahoma';
+    font-weight: bold;
+
 }
 .headerTitle
 {
@@ -32,6 +42,26 @@ body
     text-align: center;
     font-family: tahoma;
     font-size: 24px;
+}
+.timeToTeach
+{
+    background-color: green;
+    margin-top:10px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+}
+.timesEntered
+{
+    background-color: darkorange;
+    margin-top:10px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+}
+.contentHeader2
+{
+    text-align: center;
+    font-family: tahoma;
+    font-size: 18px;
 }
 .backgroundColor
 {
@@ -60,6 +90,12 @@ body
     border-radius: 40px;
     color: white;
 }
+.tabed-border
+{
+    margin-top: 0px;
+    border-radius: 0px 0px 40px 40px;
+    border: 0px;
+}
 .height
 {
     margin-top: 10px;
@@ -83,7 +119,23 @@ body
 {
     width: 58.33333%;
 }
-
+.form-control2
+{
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
 .btn
 {
     margin-top: 20px;
@@ -125,29 +177,59 @@ body
 }
 
 .nav-tabs {
-    border-bottom: 3px solid #a6adaf;
+    border-bottom: 0px solid #0b3365;
+    margin-top: 10px;
 }
 .nav-tabs > li {
     float: right;
     margin-bottom: -1px;
+    font-family: 'tahoma';
+    border: 1px solid #002166;
+    border-radius: 20px 20px 0px 0px;
 }
 .nav-tabs > li > a {
     margin-right: 2px;
     line-height: 1.428571429;
     border: 1px solid transparent;
-    border-radius: 4px 4px 0 0;
+    border-radius: 20px 20px 0px 0px;
+    font-family: 'tahoma';
+    color:  #002166;
+}
+.delete
+{
+    cursor: pointer;
+}
+table
+{
+    direction: rtl;
+    text-align: center;
+    font-family: 'tahoma';
+}
+th
+{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    background-color: #f5f5f5;
+    color: black;
 }
 .nav-tabs > li > a:hover {
-    border-color: #eee #eee #ddd;
+    border-color: #00e9ff;
+    background-color: #00e9ff;
+    font-family: 'tahoma';
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-    color: #555;
+    color: white;
     cursor: default;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #0b3365;
+    border: 1px solid #0b3365;
     border-bottom-color: transparent;
+    font-family: 'tahoma';
 }
 .font_dropdown
 {
