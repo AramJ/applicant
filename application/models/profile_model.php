@@ -7,19 +7,12 @@
 
 class Profile_model extends CI_Model
 {
-    /*
-     * Checks for the login status whether the username password are valid or not
-     * @param $melliCode
-     * @return bool|resource
-     */
-    public static function change_values($melliCode,$con)
+    public static function changePassword($melliCode,$encryptedPassword,$con)
     {
-        $result = $con->get_where('usertb',array('melliCode' => $melliCode));
-        if($result->num_rows>0)
-        {
-            return $result;
-        }
-        else
-            return false;
+        $data = array(
+            'password' => $encryptedPassword,
+        );
+        $con->where('melli_code',$melliCode);
+        $con->update('usertb',$data);
     }
 } 

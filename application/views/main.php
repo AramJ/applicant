@@ -233,8 +233,8 @@
     <div class="row">
         <div class="container">
             <ul class="nav nav-tabs" role="tablist">
-                <li  class="<?php echo $isInsertDateMode?'active':'' ?>"><a href="<?php echo base_url();?>/index.php/main" class="font_sidetext">انتخاب درس و روز</a></li>
-                <li  class="<?php echo $isProfileMode?'active':'' ?>"><a href="<?php echo base_url();?>/index.php/profile" class="font_sidetext">اطلاعات شخص</a></li>
+                <li  class="<?php echo $isInsertDateMode?'active':'' ?>"><a href="<?php echo base_url();?>index.php/main" class="font_sidetext">انتخاب درس و روز</a></li>
+                <li  class="<?php echo $isProfileMode?'active':'' ?>"><a href="<?php echo base_url();?>index.php/profile" class="font_sidetext">اطلاعات شخص</a></li>
             </ul>
         </div>
     </div>

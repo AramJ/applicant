@@ -50,6 +50,20 @@ body
     margin-bottom: 25px;
     border-radius: 40px;
 }
+.changePassword
+{
+    background-color: darkgoldenrod;
+    margin-top:10px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+}
+.changeInfo
+{
+    background-color: darkkhaki;
+    margin-top:10px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+}
 .courseEntered
 {
     background-color: purple;
@@ -76,6 +90,13 @@ body
     text-align: center;
     font-family: tahoma;
     font-size: 18px;
+}
+.contentHeader3
+{
+    text-align: right;
+    font-family: tahoma;
+    font-size: 14px;
+    color: red;
 }
 .backgroundColor
 {
