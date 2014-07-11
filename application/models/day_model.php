@@ -3,6 +3,29 @@
 
 class Day_model extends CI_Model
 {
+    public static function get_courses($con)
+    {
+        $result = $con->get_where('coursetb');
+        if($result->num_rows>0)
+        {
+            return $result;
+        }
+        else
+            return false;
+    }
+
+    public static function get_course_user($melliCode,$con)
+    {
+        //$result = $con->get_where('user_coursetb',array('melli_code' => $melliCode));
+        $result = $con->select('*')->from('coursetb')->join('user_coursetb', 'coursetb.course_code=user_coursetb.course_code')->where(array('user_coursetb.melli_code' => $melliCode))->get();
+        if($result->num_rows>0)
+        {
+            return $result;
+        }
+        else
+            return false;
+    }
+
     public static function get_coming_hours($melliCode,$con)
     {
         $result = $con->get_where('timetb',array('melli_code' => $melliCode));

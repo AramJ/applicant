@@ -163,67 +163,123 @@
             <div class="row loginForm">
                 <p class="col-xs-12 contentHeader">ورود اطلاعات امکان تدریس</p>
             </div>
-            <div class="col-xs-8 col-xs-push-4 timeToTeach">
-                <div class="row loginForm" id="inputTime">
-                    <div class="row loginForm">
-                        <p class="col-xs-12 contentHeader2">ثبت اطلاعات ساعت حضور</p>
-                    </div>
-                    <form name="login_form form-inline" role="form">
-                        <div class="row">
-                            <div class="form-group" style="margin-left: 20px">
-                                <label class="col-xs-2 col-xs-push-10 control-label font-model-titr" for="weekDay">روز هفته</label>
-                                <select class="form-control2 col-xs-2 col-xs-push-6 rtlText font-model" id="weekDay">
-                                    <option value="1">شنبه</option>
-                                    <option value="2">یکشنبه</option>
-                                    <option value="3">دوشنبه</option>
-                                    <option value="4">سه شنبه</option>
-                                    <option value="5">چهارشنبه</option>
-                                    <option value="6">پنجشتبه</option>
-                                </select>
-                                <label class="col-xs-2 col-xs-push-2 control-label font-model-titr" for="startTime">از ساعت</label>
-                                <input class="form-control2 col-xs-2 col-xs-pull-2 rtlText font-model" type="time" id="startTime">
-                                <label class="col-xs-2 col-xs-pull-6 control-label font-model-titr" for="endTime">تا ساعت</label>
-                                <input class="form-control2 col-xs-2 col-xs-pull-10 rtlText font-model" type="time" id="endTime">
+            <div class="col-xs-8 col-xs-push-4">
+                <div class="timeToTeach">
+                    <div class="row loginForm" id="inputTime">
+                        <div class="row loginForm">
+                            <p class="col-xs-12 contentHeader2">ثبت اطلاعات ساعت حضور</p>
+                        </div>
+                        <form name="login_form form-inline" role="form">
+                            <div class="row">
+                                <div class="form-group" style="margin-left: 20px">
+                                    <label class="col-xs-2 col-xs-push-10 control-label font-model-titr" for="weekDay">روز هفته</label>
+                                    <select class="form-control2 col-xs-2 col-xs-push-6 rtlText font-model" id="weekDay">
+                                        <option value="1">شنبه</option>
+                                        <option value="2">یکشنبه</option>
+                                        <option value="3">دوشنبه</option>
+                                        <option value="4">سه شنبه</option>
+                                        <option value="5">چهارشنبه</option>
+                                        <option value="6">پنجشتبه</option>
+                                    </select>
+                                    <label class="col-xs-2 col-xs-push-2 control-label font-model-titr" for="startTime">از ساعت</label>
+                                    <input class="form-control2 col-xs-2 col-xs-pull-2 rtlText font-model" type="time" id="startTime">
+                                    <label class="col-xs-2 col-xs-pull-6 control-label font-model-titr" for="endTime">تا ساعت</label>
+                                    <input class="form-control2 col-xs-2 col-xs-pull-10 rtlText font-model" type="time" id="endTime">
+                                </div>
                             </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-xs-2 col-xs-offset-5 font-model" id="saveTime">ثبت ساعت</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="timesEntered">
+                    <div class="row loginForm">
+                        <div class="row loginForm">
+                            <p class="col-xs-12 contentHeader2">ساعت های اعلام شده</p>
                         </div>
-                        <div class="row">
-                            <button class="btn btn-primary col-xs-2 col-xs-offset-5 font-model" id="saveTime">ثبت ساعت</button>
-                        </div>
-                    </form>
+                        <table class="table table-stripped table-hover table-responsive" id="timeTable">
+                            <tr>
+                                <th>روز هفته</th>
+                                <th>ساعت شروع</th>
+                                <th>ساعت پایان</th>
+                                <th>حذف ساعت</th>
+                            </tr>
+                            <?php
+                                $week_days = array(
+                                    1 => "شنبه",
+                                    2 => "یکشنبه",
+                                    3 => "دوشتبه",
+                                    4 => "سه شنبه",
+                                    5 => "چهارشنبه",
+                                    6 => "پنجشنبه"
+                                );
+                                foreach($times as $time)
+                                {
+                                    echo "<tr id='row".$time["id"]."'>";
+                                    echo "<td>".$week_days[$time["day_of_week"]]."</td>";
+                                    echo "<td>".$time["start_time"]."</td>";
+                                    echo "<td>".$time["end_time"]."</td>";
+                                    echo "<td>".'<img src="'.base_url().'img/delete.png" id="img'.$time["id"].'" class="delete" onclick="deleteRow(this.id)"/>'."</td>";
+                                    echo "</tr>";
+                                }
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-8 col-xs-push-4 timesEntered">
-                <div class="row loginForm">
-                    <div class="row loginForm">
-                        <p class="col-xs-12 contentHeader2">ساعت های اعلام شده</p>
+            <div class="col-xs-4 col-xs-pull-8">
+                <div class="courseToTeach">
+                    <div class="row loginForm" id="inputCourse">
+                        <div class="row loginForm">
+                            <p class="col-xs-12 contentHeader2">ثبت اطلاعات دروس مورد نظر جهت تدریس</p>
+                        </div>
+                        <form name="login_form form-inline" role="form">
+                            <div class="row">
+                                <div class="form-group" style="margin-left: 20px">
+                                    <label class="col-xs-5 col-xs-push-7 control-label font-model-titr" for="course">درس مورد نظر</label>
+                                    <select class="form-control2 col-xs-7 col-xs-pull-5 rtlText font-model" id="course">
+                                        <?php
+                                            foreach($courses as $course)
+                                                echo "<option value='".$course["course_code"]."'>".$course["course_name"]."</option>";
+                                        ?>
+                                        <!--
+                                        <option value="1">شنبه</option>
+                                        <option value="2">یکشنبه</option>
+                                        <option value="3">دوشنبه</option>
+                                        <option value="4">سه شنبه</option>
+                                        <option value="5">چهارشنبه</option>
+                                        <option value="6">پنجشتبه</option>-->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary col-xs-6 col-xs-offset-3 font-model" id="saveTime">ثبت درس</button>
+                            </div>
+                        </form>
                     </div>
-                    <table class="table table-stripped table-hover table-responsive" id="timeTable">
-                        <tr>
-                            <th>روز هفته</th>
-                            <th>ساعت شروع</th>
-                            <th>ساعت پایان</th>
-                            <th>حذف ساعت</th>
-                        </tr>
-                        <?php
-                            $week_days = array(
-                                1 => "شنبه",
-                                2 => "یکشنبه",
-                                3 => "دوشتبه",
-                                4 => "سه شنبه",
-                                5 => "چهارشنبه",
-                                6 => "پنجشنبه"
-                            );
-                            foreach($times as $time)
+                </div>
+                <div class="courseEntered">
+                    <div class="row loginForm">
+                        <div class="row loginForm">
+                            <p class="col-xs-12 contentHeader2">درس های اعلام شده</p>
+                        </div>
+                        <table class="table table-stripped table-hover table-responsive" id="timeTable">
+                            <tr>
+                                <th>درس</th>
+                                <th>حذف درس</th>
+                            </tr>
+                            <?php
+                            foreach($userCourses as $cu)
                             {
-                                echo "<tr id='row".$time["id"]."'>";
-                                echo "<td>".$week_days[$time["day_of_week"]]."</td>";
-                                echo "<td>".$time["start_time"]."</td>";
-                                echo "<td>".$time["end_time"]."</td>";
-                                echo "<td>".'<img src="'.base_url().'img/delete.png" id="img'.$time["id"].'" class="delete" onclick="deleteRow(this.id)"/>'."</td>";
+                                echo "<tr id='row".$cu["course_code"]."'>";
+                                echo "<td>".$cu["course_name"]."</td>";
+                                echo "<td>".'<img src="'.base_url().'img/delete.png" id="img'.$cu["course_code"].'" class="delete" onclick="deleteRow(this.id)"/>'."</td>";
                                 echo "</tr>";
                             }
-                        ?>
-                    </table>
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,12 +10,12 @@ class Main extends CI_Controller {
         $gender = $this->session->userdata('gender');
         $this->load->model('day_model');
         $result = $this->day_model->get_coming_hours($melliCode,$this->db);
-        $data = array();
+        $dataTimes = array();
         if($result!=false)
         {
             foreach($result->result() as $row)
             {
-                $data[] = array(
+                $dataTimes[] = array(
                         'day_of_week' => $row->day_of_week,
                         'start_time' => $row->start_time,
                         'end_time' => $row->end_time,
@@ -23,12 +23,52 @@ class Main extends CI_Controller {
                     );
             }
         }
+        $courses = $this->day_model->get_courses($this->db);
+        $dataCourses = array();
+        if($courses!=false)
+        {
+            foreach($courses->result() as $row)
+            {
+                $dataCourses[] = array(
+                    'course_name' => $row->course_name,
+                    'course_code' => $row->course_code
+                );
+            }
+        }
+
+        $courseUser = $this->day_model->get_course_user($melliCode,$this->db);
+        $dataUserCourses = array();
+        if($courseUser!=false)
+        {
+            foreach($courseUser->result() as $row)
+            {
+                $dataUserCourses[] = array(
+                    'course_name' => $row->course_name,
+                    'course_code' => $row->course_code,
+                );
+            }
+        }
+
+        if($result!=false)
+        {
+            foreach($result->result() as $row)
+            {
+                $data[] = array(
+                    'day_of_week' => $row->day_of_week,
+                    'start_time' => $row->start_time,
+                    'end_time' => $row->end_time,
+                    'id' => $row->id
+                );
+            }
+        }
         $mainPassedArray = array(
             "isInsertDateMode" => true,
             "isProfileMode" => false,
             "gender" => $gender,
             "name" => $name,
-            "times" => $data
+            "times" => $dataTimes,
+            "courses" => $dataCourses,
+            "userCourses" => $dataUserCourses
         );
         $this->load->helper('url');
         $this->load->view('header');
