@@ -38,38 +38,98 @@
         <div class="container">
             <div class="row loginForm">
                 <p class="col-xs-12 contentHeader">تایید ثبت نام کنندگان</p>
-                <div class="timesEntered">
-                    <div class="row loginForm">
+			</div>
+			<div class="row loginForm">
+                <?php
+                foreach($users as $user)
+                {
+                    if($user['is_approved'] == 0)
+                    {
+?>
+                    <div class="userInfoToAccept" id="<?php echo $user['melli_code']?>">
                         <div class="row loginForm">
-                            <p class="col-xs-12 contentHeader2"><?php echo "";?></p>
+                            <div class="row loginForm">
+                                <p class="col-xs-12 contentHeader2"><?php echo $user['name']." ".$user['family'];?></p>
+                            </div>
+							<div class="row">
+								<div class="col-xs-4 col-xs-push-8 userInfoText">
+									نام پدر:<?php echo $user['father_name']; ?>
+								</div>
+								<div class="col-xs-4 userInfoText">
+									شماره شناسنامه:<?php echo $user['shenasname_number'];?>
+								</div>
+								<div class="col-xs-4 col-xs-pull-8 userInfoText">
+									تاریخ تولد:<?php echo $user['birth_date']; ?>
+								</div>
+							</div>	
+							<div class="row">
+								<div class="col-xs-4 col-xs-push-8 userInfoText">
+									محل تولد:<?php echo $user['birth_location'];?>
+								</div>
+								<div class="col-xs-4 userInfoText">
+									محل صدور شناسنامه:<?php echo $user['shenasname_place'];?>
+								</div>
+								<div class="col-xs-4 col-xs-pull-8 userInfoText">
+									وضعیت تاهل:<?php echo $user['marriage_situation'] == 0?'مجرد':'متاهل';?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4 col-xs-push-8 userInfoText">
+									وضعیت نظام وضیفه:<?php if($user['nezam_vazife_situation'] == NULL) echo "سربازی ندارند"; else echo $user['nezam_vazife_situation'];?>
+								</div>
+								<div class="col-xs-4 userInfoText">
+									کد ملی:<?php echo $user['melli_code'];?>
+								</div>
+								<div class="col-xs-4 col-xs-pull-8 userInfoText">
+									وضعیت علمی:<?php echo $user['elmi_situation'];?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4 col-xs-push-8 userInfoText">
+									تلفن منزل:<?php echo $user['tel_home'];?>
+								</div>
+								<div class="col-xs-4 userInfoText">
+									پست الکترونیکی:<?php echo $user['email'];?>
+								</div>
+								<div class="col-xs-4 col-xs-pull-8 userInfoText">
+									تلفن محل کار:<?php echo $user['tel_work'];?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4 col-xs-push-8 userInfoText">
+									تلفن همراه:<?php echo $user['mobile'];?>
+								</div>
+								<div class="col-xs-4 userInfoText">
+									مقطع آموزشی:<?php echo $user['teaching_maqtaa'];?>
+								</div>
+								<div class="col-xs-4 col-xs-pull-8 userInfoText">
+									مذهب:<?php echo $user['religion'];?>
+								</div>
+							</div>
+                            <div class="row">
+                                <div class="col-xs-10 col-xs-push-2">
+                                    <div class="row">
+                                        <div class="col-xs-12 userInfoAddress">
+                                            آدرس محل کار:<?php echo $user['work_address']?>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 userInfoAddress">
+                                            آدرس منزل:<?php echo $user['home_address']?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 col-xs-pull-10">
+                                    <button class="btn btn-success" style="margin-top: 2px; margin-bottom: 1px;">تایید حساب کاربری</button>
+                                    <button class="btn btn-danger" style="margin-top: 1px; margin-bottom: 2px;">حذف حساب کاربری</button>
+                                </div>
+                            </div>
                         </div>
-                        <table class="table table-striped table-bordered user_acpt">
-                            <thead>
-                            <tr>
-                                <th style="text-align: right;">نام و نام خانوادگی</th>
-                                <th style="text-align: right;">نام پدر</th>
-                                <th style="text-align: right;">شماره شناسنامه</th>
-                                <th style="text-align: right;">تاریخ تولد</th>
-                                <th style="text-align: right;">مکان تولد</th>
-                                <th style="text-align: right;">محل صدور شناسنامه</th>
-                                <th style="text-align: right;">مذهب</th>
-                                <th style="text-align: right;">وضعیت تاهل</th>
-                                <th style="text-align: right;">وضعیت نظام وظیفه</th>
-                                <th style="text-align: right;">وضعیت علمی</th>
-                                <th style="text-align: right;">گروه آموزشی</th>
-                                <th style="text-align: right;">شماره تماس منزل</th>
-                                <th style="text-align: right;">شماره تماس محل کار</th>
-                                <th style="text-align: right;">تلفن همراه</th>
-                                <th style="text-align: right;">آدرس منزل</th>
-                                <th style="text-align: right;">آدرس محل کار</th>
-                                <th style="text-align: right;">پست الکترونیک</th>
-                                <th style="text-align: right;">مقطع تدریس</th>
-
-                            </tr>
-                            </thead>
-                        </table>
                     </div>
-                </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
