@@ -217,7 +217,7 @@
     </script>
 
     <div class="row">
-        <div class="col-xs-12 rtlText headerWelcome">
+        <div class="col-xs-10 col-xs-push-2 rtlText headerWelcome">
             <?php
                 echo "سلام";
                 if($gender=="0")
@@ -227,6 +227,9 @@
                 echo $name. ". ";
                 echo "به سامانه درخواست تدریس اساتید دانشگاه علم و فرهنگ خوش آمدید.";
             ?>
+        </div>
+        <div class="col-xs-2 col-xs-pull-10">
+            <a href="<?php echo base_url();?>index.php/login/logOut/"><button class="btn btn-danger">خروج از حساب کاربری</button></a>
         </div>
 
     </div>

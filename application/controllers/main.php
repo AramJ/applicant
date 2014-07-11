@@ -1,8 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller {
+
+    private function checkLoginState()
+    {
+        $this->load->helper('url');
+        $this->load->library('session');
+        if($this->session->userdata('melli_code') == false)
+        {
+            redirect('/login/', 'refresh');
+            return false;
+        }
+        else if($this->session->userdata('isAdmin') == 1)
+        {
+            redirect('/admin_main/', 'refresh');
+            return false;
+        }
+        else
+            return "normal user";
+    }
+
     public function index()
     {
+        $this->checkLoginState();
         $this->load->model('day_model');
         $this->load->library('session');
         $melliCode = $this->session->userdata('melli_code');
@@ -70,13 +90,13 @@ class Main extends CI_Controller {
             "courses" => $dataCourses,
             "userCourses" => $dataUserCourses
         );
-        $this->load->helper('url');
         $this->load->view('header');
         $this->load->view('main',$mainPassedArray);
     }
 
     public function deleteTime()
     {
+        $this->checkLoginState();
         $this->load->model('day_model');
         $id = $this->input->post('id');
         $this->day_model->delete_day($id,$this->db);
@@ -88,6 +108,7 @@ class Main extends CI_Controller {
 
     public function deleteCourse()
     {
+        $this->checkLoginState();
         $this->load->model('day_model');
         $this->load->library('session');
         $melliCode = $this->session->userdata('melli_code');
@@ -101,6 +122,7 @@ class Main extends CI_Controller {
 
     public function addTime()
     {
+        $this->checkLoginState();
         $this->load->model('day_model');
         $this->load->library('session');
         $melliCode = $this->session->userdata('melli_code');
@@ -141,6 +163,7 @@ class Main extends CI_Controller {
 
     public function addCourse()
     {
+        $this->checkLoginState();
         $this->load->model('day_model');
         $this->load->library('session');
         $melliCode = $this->session->userdata('melli_code');

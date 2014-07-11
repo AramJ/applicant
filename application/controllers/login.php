@@ -8,7 +8,15 @@ class Login extends CI_Controller {
         $this->load->view('login');
     }
 
-    function checkLogin()
+    public function logOut()
+    {
+        $this->load->helper('url');
+        $this->load->library('session');
+        $this->session->sess_destroy();
+        redirect('/login/', 'refresh');
+    }
+
+    public function checkLogin()
     {
         $this->load->model('login_model');
         $this->load->library('encrypt');

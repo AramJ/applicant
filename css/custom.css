@@ -98,6 +98,10 @@ body
     font-size: 14px;
     color: red;
 }
+a>button,a>button:hover
+{
+    color: white;
+}
 .backgroundColor
 {
     background: url('../img/body_jahad_pattern.png' ) repeat 17px top, url('../img/body_bg.png' ) repeat-x center top;
