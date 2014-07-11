@@ -281,13 +281,16 @@
                         <div class="row loginForm">
                             <p class="col-xs-12 contentHeader2">ساعت های اعلام شده</p>
                         </div>
-                        <table class="table table-stripped table-hover table-responsive" id="timeTable">
-                            <tr>
-                                <th>روز هفته</th>
-                                <th>ساعت شروع</th>
-                                <th>ساعت پایان</th>
-                                <th>حذف ساعت</th>
-                            </tr>
+                        <table class="table table-stripped table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>روز هفته</th>
+                                    <th>ساعت شروع</th>
+                                    <th>ساعت پایان</th>
+                                    <th>حذف ساعت</th>
+                                </tr>
+                            </thead>
+                            <tbody id="timeTable">
                             <?php
                                 $week_days = array(
                                     1 => "شنبه",
@@ -307,6 +310,7 @@
                                     echo "</tr>";
                                 }
                             ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -340,20 +344,24 @@
                         <div class="row loginForm">
                             <p class="col-xs-12 contentHeader2">درس های اعلام شده</p>
                         </div>
-                        <table class="table table-stripped table-hover table-responsive" id="courseTable">
-                            <tr>
-                                <th>درس</th>
-                                <th>حذف درس</th>
-                            </tr>
-                            <?php
-                            foreach($userCourses as $cu)
-                            {
-                                echo "<tr id='cro".$cu["course_code"]."'>";
-                                echo "<td>".$cu["course_name"]."</td>";
-                                echo "<td>".'<img src="'.base_url().'img/delete.png" id="cri'.$cu["course_code"].'" class="delete" onclick="deleteCourse(this.id)"/>'."</td>";
-                                echo "</tr>";
-                            }
-                            ?>
+                        <table class="table table-stripped table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>درس</th>
+                                    <th>حذف درس</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courseTable">
+                                <?php
+                                foreach($userCourses as $cu)
+                                {
+                                    echo "<tr id='cro".$cu["course_code"]."'>";
+                                    echo "<td>".$cu["course_name"]."</td>";
+                                    echo "<td>".'<img src="'.base_url().'img/delete.png" id="cri'.$cu["course_code"].'" class="delete" onclick="deleteCourse(this.id)"/>'."</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
