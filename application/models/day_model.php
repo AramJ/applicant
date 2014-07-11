@@ -37,6 +37,32 @@ class Day_model extends CI_Model
             return false;
     }
 
+    public static function add_course_user($melliCode, $courseCode, $con)
+    {
+        $result = $con->insert('user_coursetb',array(
+            'melli_code' => $melliCode,
+            'course_code' => $courseCode
+        ));
+
+        $result = $con->get_where('coursetb',array('course_code' => $courseCode));
+        if($result->num_rows>0)
+        {
+            foreach($result->result() as $co)
+                return $co->course_name;
+        }
+        else
+            return false;
+    }
+
+    public static function delete_course_user($melliCode, $courseCode, $con)
+    {
+        $result = $con->delete('user_coursetb',array(
+            'melli_code' => $melliCode,
+            'course_code' => $courseCode
+        ));
+        return $con->_error_message();
+    }
+
     public static function add_day($melliCode, $weekDay, $startTime, $endTime, $con)
     {
         $result = $con->insert('timetb',array(
@@ -53,6 +79,6 @@ class Day_model extends CI_Model
         $result = $con->delete('timetb',array(
             'id' => $id
         ));
-        return $con->insert_id();
+        return $result;
     }
 } 

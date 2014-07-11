@@ -26,6 +26,7 @@
                     if(result == "yes")
                     {
                         $(rowId).fadeOut();
+                        $(rowId).remove();
                     }
                     else
                     {
@@ -41,6 +42,40 @@
                 error: function(xhr, status, error) {
                     $(rowId).notify("در حذف ساعت مورد نظر مشکلی به وجود آمده است، لطفا مجددا امتحان کنید و یا در صورت تکرار با پشتیبانی تماس بگیرید",{
                        position: "top right",
+                        className: "error"
+                    });
+                }
+            });
+            return false;
+        }
+
+        function deleteCourse(clicked_id)
+        {
+            rowId = "#cro"+clicked_id.toString().substr(3);
+            request = $.ajax({
+                url:"<?php echo base_url(); ?>index.php/main/deleteCourse",
+                type:"POST",
+                data:{"course_code":clicked_id.toString().substr(3)},
+                success:function(result){
+                    if(result == "yes")
+                    {
+                        $(rowId).fadeOut();
+                        $(rowId).remove();
+                    }
+                    else
+                    {
+                        $(rowId).notify("در حذف درس مورد نظر مشکلی به وجود آمده است، لطفا مجددا تلاش کنید و در صورت تکرار مشکل با پشتیبانی تماس بگیرید",{
+                            position: "top right",
+                            className: "error"
+                        });
+                    }
+                },
+                beforeSend:function()
+                {
+                },
+                error: function(xhr, status, error) {
+                    $(rowId).notify("در حذف درس مورد نظر مشکلی به وجود آمده است، لطفا مجددا تلاش کنید و در صورت تکرار مشکل با پشتیبانی تماس بگیرید",{
+                        position: "top right",
                         className: "error"
                     });
                 }
@@ -126,6 +161,51 @@
                     },
                     error: function(xhr, status, error) {
                         $("#inputTime").notify("متاسفانه امکان افزودن این ساعت وجود ندارد، لطفا با پشتیبانی تماس بگیرید",{
+                            position: "top right",
+                            className: "error"
+                        });
+                    }
+                });
+                return false;
+            });
+            $("#saveCourse").click(function(){
+                var course = $("#course").val();
+                request = $.ajax({
+                    url:"<?php echo base_url(); ?>index.php/main/addCourse",
+                    type:"POST",
+                    data:{"course_code":course},
+                    success:function(result){
+                        console.log(result);
+                        if(result.substr(0,3) == "yes")
+                        {
+                            $("#inputCourse").notify("درس جدید با موفقیت به لیست دروس ارائه شده اضافه شد",{
+                                position: "top right",
+                                className: "success"
+                            });
+                            var newRow = "<tr id='cro"+course+"'><td>"+result.substr(3)+"</td><td><img src='<?php echo base_url();?>img/delete.png' id='cri"+course+"' class='delete' onclick='deleteCourse(this.id)'/></td></tr>";
+                            console.log(newRow);
+                            $("#courseTable").append(newRow);
+
+                        }
+                        else if(result == "conflict")
+                        {
+                            $("#inputCourse").notify("شما این درس را قبلا انتخاب کرده اید",{
+                                position: "top right",
+                                className: "error"
+                            });
+                        }
+                        else{
+                            $("#inputCourse").notify("متاسفانه امکان اضافه کردن این درس در حال حاظر وجود ندارد، لطفا مجددا تلاش نمایید و در صورت بروز مشکل با پشتیبانی تماس بگیرید.",{
+                                position: "top right",
+                                className: "error"
+                            });
+                        }
+                    },
+                    beforeSend:function()
+                    {
+                    },
+                    error: function(xhr, status, error) {
+                        $("#inputCourse").notify("متاسفانه امکان اضافه کردن این درس در حال حاظر وجود ندارد، لطفا مجددا تلاش نمایید و در صورت بروز مشکل با پشتیبانی تماس بگیرید.",{
                             position: "top right",
                             className: "error"
                         });
@@ -243,18 +323,11 @@
                                             foreach($courses as $course)
                                                 echo "<option value='".$course["course_code"]."'>".$course["course_name"]."</option>";
                                         ?>
-                                        <!--
-                                        <option value="1">شنبه</option>
-                                        <option value="2">یکشنبه</option>
-                                        <option value="3">دوشنبه</option>
-                                        <option value="4">سه شنبه</option>
-                                        <option value="5">چهارشنبه</option>
-                                        <option value="6">پنجشتبه</option>-->
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-primary col-xs-6 col-xs-offset-3 font-model" id="saveTime">ثبت درس</button>
+                                <button class="btn btn-primary col-xs-6 col-xs-offset-3 font-model" id="saveCourse">ثبت درس</button>
                             </div>
                         </form>
                     </div>
@@ -264,7 +337,7 @@
                         <div class="row loginForm">
                             <p class="col-xs-12 contentHeader2">درس های اعلام شده</p>
                         </div>
-                        <table class="table table-stripped table-hover table-responsive" id="timeTable">
+                        <table class="table table-stripped table-hover table-responsive" id="courseTable">
                             <tr>
                                 <th>درس</th>
                                 <th>حذف درس</th>
@@ -272,9 +345,9 @@
                             <?php
                             foreach($userCourses as $cu)
                             {
-                                echo "<tr id='row".$cu["course_code"]."'>";
+                                echo "<tr id='cro".$cu["course_code"]."'>";
                                 echo "<td>".$cu["course_name"]."</td>";
-                                echo "<td>".'<img src="'.base_url().'img/delete.png" id="img'.$cu["course_code"].'" class="delete" onclick="deleteRow(this.id)"/>'."</td>";
+                                echo "<td>".'<img src="'.base_url().'img/delete.png" id="cri'.$cu["course_code"].'" class="delete" onclick="deleteCourse(this.id)"/>'."</td>";
                                 echo "</tr>";
                             }
                             ?>

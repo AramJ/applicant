@@ -78,10 +78,22 @@ class Main extends CI_Controller {
     public function deleteTime()
     {
         $this->load->model('day_model');
-        $this->load->library('session');
         $id = $this->input->post('id');
         $this->day_model->delete_day($id,$this->db);
         if($this->db->_error_message() == "")
+            echo "yes";
+        else
+            echo "no";
+    }
+
+    public function deleteCourse()
+    {
+        $this->load->model('day_model');
+        $this->load->library('session');
+        $melliCode = $this->session->userdata('melli_code');
+        $courseCode = $this->input->post('course_code');
+        $result = $this->day_model->delete_course_user($melliCode, $courseCode,$this->db);
+        if($result == "")
             echo "yes";
         else
             echo "no";
@@ -102,13 +114,6 @@ class Main extends CI_Controller {
             {
                 if($row->day_of_week == $weekDay)
                 {
-                   /* echo $startTime." ".$endTime."<br/>";
-                    echo "<pre>";
-                    print_r($row);
-                    echo "</pre><br/>";
-                    echo $endTime. " " .$row->end_time . " " . ($endTime <= $row->end_time?"t":"f") . "<br/>";
-                    echo $endTime. " " .$row->start_time . " " . ($endTime >= $row->start_time?"t":"f") . "<br/>";
-                    */
                     if($startTime <= $row->start_time && $endTime >= $row->end_time)
                     {
                         echo "conflict";
@@ -128,6 +133,31 @@ class Main extends CI_Controller {
             }
         }
         $result = $this->day_model->add_day($melliCode,$weekDay,$startTime, $endTime,$this->db);
+        if($this->db->_error_message() == "")
+            echo "yes".$result;
+        else
+            echo "no";
+    }
+
+    public function addCourse()
+    {
+        $this->load->model('day_model');
+        $this->load->library('session');
+        $melliCode = $this->session->userdata('melli_code');
+        $courseCode = $this->input->post('course_code');
+        $result = $this->day_model->get_course_user($melliCode,$this->db);
+        if($result != false)
+        {
+            foreach($result->result() as $row)
+            {
+                if($row->course_code == $courseCode)
+                {
+                    echo "conflict";
+                    return;
+                }
+            }
+        }
+        $result = $this->day_model->add_course_user($melliCode,$courseCode,$this->db);
         if($this->db->_error_message() == "")
             echo "yes".$result;
         else
