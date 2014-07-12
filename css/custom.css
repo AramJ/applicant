@@ -8,6 +8,9 @@ body
 {
     background: url('../Images/body_jahad_pattern.png' ) repeat 17px top, url('../Images/body_bg.png' ) repeat-x center top;
     -pie-background: url('../Images/body_jahad_pattern.png' ) repeat 17px top, url('../Images/body_bg.png' ) repeat-x center top;
+    font-family: tahoma;
+    font-size: 14px;
+    direction: rtl;
 }
 .loginForm
 {
@@ -200,11 +203,15 @@ a>button,a>button:hover
 }
 .btn
 {
-    margin-top: 20px;
+    font-family: tahoma;
+    font-size: 14px;
+}
+.btn-margin
+{
+    margin-top:20px;
     margin-bottom: 20px;
     border: 1px solid black;
 }
-
 .font-model
 {
     font-size: 14px;

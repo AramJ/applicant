@@ -25,8 +25,9 @@
                 success:function(result){
                     if(result == "yes")
                     {
-                        $(rowId).fadeOut();
-                        $(rowId).remove();
+                        $(rowId).fadeOut("slow",function(){
+                            $(rowId).remove();
+                        });
                     }
                     else
                     {
@@ -59,8 +60,9 @@
                 success:function(result){
                     if(result == "yes")
                     {
-                        $(rowId).fadeOut();
-                        $(rowId).remove();
+                        $(rowId).fadeOut("slow",function(){
+                            $(rowId).remove();
+                        });
                     }
                     else
                     {
@@ -271,7 +273,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-primary col-xs-2 col-xs-offset-5 font-model" id="saveTime">ثبت ساعت</button>
+                                <button class="btn btn-margin btn-primary col-xs-2 col-xs-offset-5 font-model" id="saveTime">ثبت ساعت</button>
                             </div>
                         </form>
                     </div>
@@ -334,7 +336,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button class="btn btn-primary col-xs-6 col-xs-offset-3 font-model" id="saveCourse">ثبت درس</button>
+                                <button class="btn btn-margin btn-primary col-xs-6 col-xs-offset-3 font-model" id="saveCourse">ثبت درس</button>
                             </div>
                         </form>
                     </div>

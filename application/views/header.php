@@ -20,10 +20,11 @@
 
 
     <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
-    <script src="<?php echo base_url();?>js/jquery-1.8.2.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>js/notify.min.js"></script>
-    <link rel="icon" type="shortcut icon"
-          href="<?php echo base_url();?>img/iconabove.ico" />
+    <script src="<?php echo base_url();?>js/jquery.confirm.js"></script>
+    <link rel="icon" type="shortcut icon" href="<?php echo base_url();?>img/iconabove.ico" />
 </head>
 
 <body class="backgroundColor">

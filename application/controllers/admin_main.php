@@ -79,4 +79,28 @@ class Admin_main extends CI_Controller {
         $this->load->view('header');
         $this->load->view('admin_main',$mainPassedArray);
     }
+
+    public function deleteUser()
+    {
+        $this->checkLoginState();
+        $this->load->model('admin_model');
+        $melliCode = $this->input->post('melli_code');
+        $this->admin_model->delete_user($melliCode,$this->db);
+        if($this->db->_error_message() == "")
+            echo "yes";
+        else
+            echo "no";
+    }
+
+    public function acceptUser()
+    {
+        $this->checkLoginState();
+        $this->load->model('admin_model');
+        $melliCode = $this->input->post('melli_code');
+        $this->admin_model->accept_user($melliCode,$this->db);
+        if($this->db->_error_message() == "")
+            echo "yes";
+        else
+            echo "no";
+    }
 }

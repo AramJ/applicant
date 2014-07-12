@@ -66,8 +66,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="btn btn-primary col-xs-2 col-xs-offset-4 font-model" id="login_btn">ورود</button>
-                    <button class="btn btn-warning font-model" id="register_page"">ثبت نام</button>
+                    <button class="btn btn-primary col-xs-2 col-xs-offset-4 font-model btn-margin" id="login_btn">ورود</button>
+                    <button class="btn btn-warning font-model btn-margin col-xs-1" id="register_page"">ثبت نام</button>
                 </div>
             </form>
         </div>

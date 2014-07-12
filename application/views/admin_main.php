@@ -7,6 +7,97 @@
  */ ?>
 
     <script>
+         function acceptUser(clicked_id)
+         {
+             $.confirm({
+                 title:"تایید کاربر",
+                 text:"آیا میخواهید کاربر مورد نظر را تایید نمایید",
+                 confirm: function(button) {
+                     rowId = "#"+clicked_id.toString().substr(3);
+                     request = $.ajax({
+                         url:"<?php echo base_url(); ?>index.php/admin_main/acceptUser",
+                         type:"POST",
+                         data:{"melli_code":clicked_id.toString().substr(3)},
+                         success:function(result){
+                             console.log(result);
+                             if(result == "yes")
+                             {
+                                 $(rowId).fadeOut("slow",function(){
+                                    $(rowId).remove();
+                                 });
+                             }
+                             else
+                             {
+                                 $(rowId).notify("متاسفانه در حال حاظر امکان تایید این کاربر وجود ندارد، لطفا مجددا تلاش کنید و در صورت تکرار با پشتیبانی تماس بگیرید",{
+                                     position: "top right",
+                                     className: "error"
+                                 });
+                             }
+                         },
+                         beforeSend:function()
+                         {
+                         },
+                         error: function(xhr, status, error) {
+                             $(rowId).notify("متاسفانه در حال حاظر امکان تایید این کاربر وجود ندارد، لطفا مجددا تلاش کنید و در صورت تکرار با پشتیبانی تماس بگیرید",{
+                                 position: "top right",
+                                 className: "error"
+                             });
+                         }
+                     });
+                     return false;
+                 },
+                 cancel: function(button) {
+                 },
+                 confirmButton: "بله",
+                 cancelButton: "خیر"
+             });
+         }
+
+         function rejectUser(clicked_id)
+         {
+             $.confirm({
+                 title:"تایید کاربر",
+                 text:"آیا میخواهید کاربر مورد نظر را حذف نمایید"+"<br/>"+"در صورتی که تایید نمایید اطلاعات کاربر برای همیشه از بین میرود و عملیات غیر قابل بازگشت است",
+                 confirm: function(button) {
+                     rowId = "#"+clicked_id.toString().substr(3);
+                     request = $.ajax({
+                         url:"<?php echo base_url(); ?>index.php/admin_main/deleteUser",
+                         type:"POST",
+                         data:{"melli_code":clicked_id.toString().substr(3)},
+                         success:function(result){
+                             console.log(result);
+                             if(result == "yes")
+                             {
+                                 $(rowId).fadeOut("slow",function(){
+                                     $(rowId).remove();
+                                 });
+                             }
+                             else
+                             {
+                                 $(rowId).notify("متاسفانه در حال حاظر امکان تایید این کاربر وجود ندارد، لطفا مجددا تلاش کنید و در صورت تکرار با پشتیبانی تماس بگیرید",{
+                                     position: "top right",
+                                     className: "error"
+                                 });
+                             }
+                         },
+                         beforeSend:function()
+                         {
+                         },
+                         error: function(xhr, status, error) {
+                             $(rowId).notify("متاسفانه در حال حاظر امکان تایید این کاربر وجود ندارد، لطفا مجددا تلاش کنید و در صورت تکرار با پشتیبانی تماس بگیرید",{
+                                 position: "top right",
+                                 className: "error"
+                             });
+                         }
+                     });
+                     return false;
+                 },
+                 cancel: function(button) {
+                 },
+                 confirmButton: "بله",
+                 cancelButton: "خیر"
+             });
+         }
     </script>
 
     <div class="row">
@@ -75,7 +166,7 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-4 col-xs-push-8 userInfoText">
-									وضعیت نظام وضیفه:<?php if($user['nezam_vazife_situation'] == NULL) echo "سربازی ندارند"; else echo $user['nezam_vazife_situation'];?>
+									وضعیت نظام وظیفه:<?php if($user['nezam_vazife_situation'] == NULL) echo "سربازی ندارند"; else echo $user['nezam_vazife_situation'];?>
 								</div>
 								<div class="col-xs-4 userInfoText">
 									کد ملی:<?php echo $user['melli_code'];?>
@@ -120,8 +211,8 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-2 col-xs-pull-10">
-                                    <button class="btn btn-success" style="margin-top: 2px; margin-bottom: 1px;">تایید حساب کاربری</button>
-                                    <button class="btn btn-danger" style="margin-top: 1px; margin-bottom: 2px;">حذف حساب کاربری</button>
+                                    <button id="bok<?php echo $user['melli_code'];?>" class="btn btn-success" onclick="acceptUser(this.id)" style="margin-top: 2px; margin-bottom: 1px;">تایید حساب کاربری</button>
+                                    <button id="bcn<?php echo $user['melli_code'];?>" class="btn btn-danger" onclick="rejectUser(this.id)" style="margin-top: 1px; margin-bottom: 2px;">حذف حساب کاربری</button>
                                 </div>
                             </div>
                         </div>

@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <button class="btn btn-success col-xs-4 col-xs-offset-4 font-model" id="changePassword">ذخیره</button>
+                                    <button class="btn btn-margin btn-success col-xs-4 col-xs-offset-4 font-model" id="changePassword">ذخیره</button>
                                 </div>
                             </form>
                         </div>
