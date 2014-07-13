@@ -30,4 +30,23 @@ class Admin_model extends CI_Model
         $con->where('melli_code',$melliCode);
         $con->update('usertb',$data);
     }
+
+    public static function search($query,$con)
+    {
+        /*
+        $newCon=mysqli_connect($con->hostname,$con->username,$con->password,$con->database);
+        // Check connection
+        mysqli_character_set_name('utf8');
+        if (mysqli_connect_errno()) {
+            return "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+        $result = mysqli_query($newCon,$query);
+
+        mysqli_close($newCon);
+        *
+         *
+         */
+        $result = $con->query($query);
+        return $result;
+    }
 } 

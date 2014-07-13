@@ -64,6 +64,7 @@
                          url:"<?php echo base_url(); ?>index.php/admin_main/deleteUser",
                          type:"POST",
                          data:{"melli_code":clicked_id.toString().substr(3)},
+
                          success:function(result){
                              console.log(result);
                              if(result == "yes")

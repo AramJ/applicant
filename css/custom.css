@@ -81,6 +81,14 @@ body
     margin-bottom: 25px;
     border-radius: 40px;
 }
+.searchResults
+{
+    background-color: #269abc;
+    margin-top:10px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+    color: black;
+}
 .timesEntered
 {
     background-color: darkorange;
