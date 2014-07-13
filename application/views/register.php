@@ -1,353 +1,95 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: AramJ
+ * User: Najmeh
  * Date: 6/23/14
  * Time: 12:21 AM
  */ ?>
-</div>
 <script>
     $(document).ready(function(){
-        /*
-         * If click the register button
-         */
-        var check_register_validity=0;
-        $("#register_button").click(function(){
-            if(check_register_validity == 1)
-            {
-                /*
-                 * If complete the form correctly
-                 */
-                var username = document.forms["registerForm"]["username"].value;
-                var full_name = document.forms["registerForm"]["full_name"].value;
-                var password = document.forms["registerForm"]["password"].value;
-                var email = document.forms["registerForm"]["email"].value;
-                var mobile = document.forms["registerForm"]["mobile"].value;
-                var birth_date = document.forms["registerForm"]["birth_date"].value;
 
-                request = $.ajax({
+        $("#cancel_button").click(function(){
+            window.location = "<?php echo base_url();?>index.php/login/";
+            return false;
+        });
 
-                    url:"<?php echo base_url(); ?>index.php/register/submited_form",
-                    type:"POST",
-                    data:{"username":username,"full_name":full_name,"password":password,"email":email,"mobile":mobile,"birth_date":birth_date},
-                    success:function(result){
-                        if(result == "yes")
-                        {
-                            alert("ثبت نام شما با موفقیت انجام شد.");
-                        }
-                        else{
-                            alert("شما قادر به ثبت نام نمی باشید.");
-                        }
-                    },
-                    beforeSend:function()
+        $("#register_btn").click(function(){
+
+            var name = $("#name").val();
+            var family = $("#family").val();
+            var father_name = $("#father_name").val();
+            var shenasname_number = $("#shenasname_number").val();
+            var birth_date = $("#birth_date").val();
+            var birth_location = $("#birth_location").val();
+            var shenasname_place = $("#shenasname_place").val();
+            var religion = $("#religion").val();
+            var marriage_situation = $("input:radio[name=marriage]:checked").val();
+            var gender = $("input:radio[name=gender]:checked").val();
+            var nezam_vazife_situation = $("#nezam_vazife_situation").val();
+            var melli_code = $("#melli_code").val();
+            var elmi_situation = $("#elmi_situation").val();
+            var teaching_group = $("#teaching_group").val();
+            var tel_home = $("#tel_home").val();
+            var email = $("#email").val();
+            var work_address = $("#work_address").val();
+            var home_address = $("#home_address").val();
+            var tel_work = $("#tel_work").val();
+            var mobile = $("#mobile").val();
+            var teaching_maqtaa = $("#teaching_maqtaa").val();
+            var password = $("#password").val();
+            var myData = {
+                "name":name,
+                "family":family,
+                "gender":gender,
+                "father_name":father_name,
+                "shenasname_number":shenasname_number,
+                "birth_date":birth_date,
+                "birth_location":birth_location,
+                "shenasname_place":shenasname_place,
+                "religion":religion,
+                "marriage_situation":marriage_situation,
+                "nezam_vazife_situation":nezam_vazife_situation,
+                "melli_code":melli_code,
+                "elmi_situation":elmi_situation,
+                "teaching_group":teaching_group,
+                "tel_home":tel_home,
+                "email":email,
+                "work_address":work_address,
+                "home_address":home_address,
+                "tel_work":tel_work,
+                "mobile":mobile,
+                "teaching_maqtaa":teaching_maqtaa,
+                "password":password};
+
+            //alert(JSON.stringify(myData, null, 4));
+
+            request = $.ajax({
+                url:"<?php echo base_url(); ?>index.php/register/submited_form",
+                type:"POST",
+                data:myData,
+                success:function(result){
+                    console.log(result);
+                    if(result.indexOf("yes") > -1)
                     {
-                    },
-                    error: function(xhr, status, error) {
-                        alert("error");
+                        $.notify("حساب کاربری شما با موفقیت ثبت شد و پس از تایید توسط مدیر مربوطه فعال خواهد شد","success")
+                        setTimeout(function(){
+                            window.location = "<?php echo base_url();?>index.php/login";
+                        }, 2000);
                     }
-
-                });
-
-            }
-            else
-            {
-
-            }
-        });
-
- //check not being empty, special texts
-        $("#email").blur(function(){
-
-            var email = document.forms["registerForm"]["email"].value;
-            if (email == null || email == "") {
-                document.getElementById("notification_email").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_name").innerHTML = "";
-
-                check_register_validity = 1;
-            }
-        });
-
-        $("#name").blur(function(){
-
-            var name = document.forms["registerForm"]["name"].value;
-            if (name == null || name == "") {
-                document.getElementById("notification_name").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_name").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#family").blur(function(){
-
-            var family = document.forms["registerForm"]["family"].value;
-            if (family == null || family == "") {
-                document.getElementById("notification_family").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_family").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#fatherName").blur(function(){
-
-            var father = document.forms["registerForm"]["fatherName"].value;
-            if (father == null || father == "") {
-                document.getElementById("notification_fatherName").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_fatherName").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-
-        $("#shenasnameNumber").blur(function(){
-
-            var variable = document.forms["registerForm"]["shenasnameNumber"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_shenasnameNumber").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_shenasnameNumber").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#birthDate").blur(function(){
-
-            var variable = document.forms["registerForm"]["birthDate"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_birthDate").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_birthDate").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#birthLocation").blur(function(){
-
-            var variable = document.forms["registerForm"]["birthLocation"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_birthLocatione").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_birthLocatione").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#shenasnamePlace").blur(function(){
-
-            var variable = document.forms["registerForm"]["shenasnamePlace"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_shenasnamePlace").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_shenasnamePlace").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#religion").blur(function(){
-
-            var variable = document.forms["registerForm"]["religion"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_religion").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_religion").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#birthLocation").blur(function(){
-
-            var variable = document.forms["registerForm"]["birthLocation"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_birthLocation").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_birthLocation").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#marriage").blur(function(){
-
-            var variable = document.forms["registerForm"]["marriage"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_marriage").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_marriage").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#melliCode").blur(function(){
-
-            var variable = document.forms["registerForm"]["melliCode"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_melliCode").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_melliCode").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-
-        $("#elmiSituation").blur(function(){
-
-            var variable = document.forms["registerForm"]["elmiSituation"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_elmiSituation").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_elmiSituation").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#teachingGroup").blur(function(){
-
-            var variable = document.forms["registerForm"]["teachingGroup"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_teachingGroup").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_teachingGroup").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#teachingMaqtaa").blur(function(){
-
-            var variable = document.forms["registerForm"]["teachingMaqtaa"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_teachingMaqtaa").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_teachingMaqtaa").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#telHome").blur(function(){
-
-            var variable = document.forms["registerForm"]["telHome"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_telHome").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_telHome").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-
-        $("#telWork").blur(function(){
-            var variable = document.forms["registerForm"]["telWork"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_telWork").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_telWork").innerHTML = "";
-                check_register_validity = 1;
-            }
-        });
-        $("#mobile").blur(function(){
-            var variable = document.forms["registerForm"]["mobile"].value;
-            if (variable == null || variable == "") {
-                document.getElementById("notification_mobile").innerHTML = "این فیلد نباید خالی باشد";
-                check_register_validity = 0;
-            }
-            else
-            {
-                document.getElementById("notification_mobile").innerHTML = "";
-                var number = document.forms["registerForm"]["mobile"].value;
-                var i;
-                var result = true;
-                for(i=0;i<number.length;i++)
-                {
-                    var j;
-                    for(j='a';j<='z';j++)
-                    {
-                        if(number[i]==j)
-                            result = false;
+                    else{
+                        $.notify(result,"error");
                     }
-                    for(j='A';j<='Z';j++)
-                    {
-                        if(number[i]==j)
-                            result = false;
-                    }
-                }
-                if(result == false)
+                },
+                beforeSend:function()
                 {
-                    document.getElementById("notification_mobile").innerHTML = "شماره موبایل اشتباه میباشد";
-                    check_register_validity = 0;
+                },
+                error: function(xhr, status, error) {
+                    $.notify("متاسفانه در حال حاضر امکان ارتباط با سرور وجود ندارد","error");
                 }
-                else
-                {
-                    document.getElementById("notification_mobile").innerHTML ="";
-                    check_register_validity = 1;
-                }
-
-
-
-
-
-                check_register_validity = 1;
-            }
+            });
+            return false;
         });
-
     });
-
-    $(document).ready(function(){
-        $("#cansel_button").click(function(){
-
-        }
-    }
-
 </script>
 
 
@@ -358,86 +100,190 @@
 <!--
         These codes are for registeration.
 -->
-<div class="borders">
-    <form name="registerForm" action="<?php echo base_url(); ?>index.php/register/submited_form/" method="post">
-        <p class="font_modeltitr col-lg-2">ثبت نام در سیستم</p><br/>
-        <div class="row  middleForm">
-            <div class="col-lg-5 col-lg-offset-3">
-                <div><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="name" id="name" placeholder="نام"><p class="font_sidetext height col-lg-2">نام</p>
-                    <p class= "error_notif col-lg-5" id="notification_name"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-4 txt-margin">نام خانوادگی</p><input type="text" class= "col-lg-offset-3 col-lg-7 height font_model txt-right" name="family" id="family" placeholder="نام خانوادگی">
-                    <p class= "error_notif col-lg-5" id="notification_family"></p>
-                </div>
-
-                <div><input type="text" class= "col-lg-offset-3 col-lg-7 height font_model txt-right" name="fatherName" id="fatherName" placeholder="نام پدر"><p class="font_sidetext height col-lg-2">نام پدر</p>
-                    <p class= "error_notif col-lg-5" id="notification_fatherName"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-4 txt-margin">شماره شناسنامه</p><input type="text" class= "col-lg-offset-3 col-lg-7 height font_model txt-right" name="shenasnameNumber" id="shenasnameNumber" placeholder="شماره شناسنامه">
-                    <p class= "error_notif col-lg-5" id="notification_shenasnameNumber"></p>
-                </div>
-                <div><input type="text" class= "col-lg-offset-3 col-lg-7 height font_model" name="birthDate" id="birthDate" placeholder="25/3/1356"><p class="txt-right font_sidetext height col-lg-2">تاریخ تولد</p>
-                    <p class= "error_notif col-lg-5" id="notification_birthDate"></p>
-                </div>
-                <div><input type="text" class= "col-lg-offset-3 col-lg-7 height font_model" name="birthLocation" id="birthLocation" placeholder="مکان تولد"><p class="txt-right font_sidetext height col-lg-2">مکان تولد</p>
-                    <p class= "error_notif col-lg-5" id="notification_birthLocation"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-4 txt-margin">مکان صدور شناسنامه</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="shenasnamePlace" id="shenasnamePlace" placeholder="مکان صدور شناسنامه">
-                    <p class= "error_notif col-lg-5" id="notification_shenasnamePlace"></p>
-                </div>
-                <div><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="religion" id="religion" placeholder="مذهب"><p class="font_sidetext height col-lg-2">مذهب</p>
-                    <p class= "error_notif col-lg-5" id="notification_religion"></p>
-                </div>
-
-                <div>
-                    <p class="font_sidetext height col-lg-4 txt-margin">وضعیت ازدواج</p>
-                        <label class="font_sidetext txt-right col-lg-offset-3 col-lg-7 height font_model">
-                            متاهل
-                            <input  id="marriage" type="radio" name="marriage" value="married">
-                        </label>
-                        <label class="font_sidetext txt-right col-lg-offset-3 col-lg-7 height font_model">
-                           مجرد
-                            <input  id="marriage" type="radio" name="marriage" value="single">
-                        </label>
-                    <p class= "error_notif col-lg-5" id="notification_marriage"></p>
-                </div>
-
-                <div><p class="font_sidetext height col-lg-10" style="margin-left: 100px;">وضعیت نظام وظیفه- در صورت ذکور بودن پاسخ دهید</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="nezamVazifeSituation" placeholder="وضعیت نظام وظیقه"></div>
-
-                <div><p class="font_sidetext height col-lg-4 txt-margin">کد ملی</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="melliCode" id="melliCode" placeholder="کد ملی">
-                    <p class= "error_notif col-lg-5" id="notification_melliCode"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-7" style="margin-left: 175px;" >وضعیت علمی - آخرین وضعیت تحصیلی</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="elmiSituation" id="elmiSituation" placeholder="وضعیت علمی">
-                    <p class= "error_notif col-lg-5" id="notification_elmiSituation"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-4 txt-margin">گروه تدریسی</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="teachingGroup" id="teachingGroup" placeholder="گروه تدریسی">
-                    <p class= "error_notif col-lg-5" id="notification_teachingGroup"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-8" style="margin-left: 175px;">مقطع تحصیلی- که تدریس خواهید کرد</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="teachingMaqtaa" id="teachingMaqtaa" placeholder="مقطع تحصیلی">
-                    <p class= "error_notif col-lg-5" id="notification_teachingMaqtaa"></p>
-                </div>
-
-                <div><p class="font_sidetext height col-lg-4 txt-margin">پست الکترونیک</p><input type="email" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="email" id="email" placeholder="پست الکترونیک">
-                    <p class= "error_notif col-lg-5" id="notification_email"></p>
-                </div>
-
-                <div><p class="font_sidetext height col-lg-4 txt-margin">آدرس محل کار</p><textarea rows="4" cols="50" type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="workingAdd" id="workingAdd" placeholder="آدرس محل کار"></textarea></div>
-                <div><p class="font_sidetext height col-lg-4 txt-margin">آدرس محل زندگی</p><textarea rows="4" cols="50" type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="livingAdd" id="livingAdd" placeholder="آدرس محل زندگی"></textarea></div>
-
-                <div><p class="font_sidetext height col-lg-4 txt-margin">شماره تلفن منزل</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="telHome" id="telHome" placeholder="شماره تلفن خانه">
-                    <p class= "error_notif col-lg-5" id="notification_telHome"></p>
-                </div>
-
-                <div><p class="font_sidetext height col-lg-4 txt-margin">شماره تلفن محل کار</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="telWork" id="telWork" placeholder="شماره تلفن محل کار">
-                    <p class= "error_notif col-lg-5" id="notification_telWork"></p>
-                </div>
-                <div><p class="font_sidetext height col-lg-4 txt-margin">تلفن همراه</p><input type="text" class= "txt-right col-lg-offset-3 col-lg-7 height font_model" name="mobile" id="mobile" placeholder="تلفن همراه">
-                    <p class= "error_notif col-lg-5" id="notification_mobile"></p>
-                </div>
-
-                <button type="submit" id="register_button" class= "col-lg-offset-3 col-lg-3 height bottum font_model margin-register-button">ثبت نام</button>
-                <button type="button" id="cansel_button" class= "col-lg-3 height bottum font_model margin-cancel-button">انصراف</button>
-            </div>
+<div class="row borders">
+    <div class="container">
+        <div class="row">
+            <p class="col-xs-12 contentHeader">ثبت نام در سیستم</p>
         </div>
-    </form>
+        <form name="register_form" action="<?php echo base_url(); ?>index.php/register/" method="post">
+            <div class="row  middleForm">
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">نام</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="name" id="name" placeholder="نام خود را وارد نمایید">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">نام خانوادگی</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="family" id="family" placeholder="نام خانوادگی">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">جنسیت</label>
+                        <div class="height col-xs-3 col-xs-push-4 rtlText form-inline">
+                            <input id="male" type="radio" name="gender" checked value="0">مذکر</input>
+                        </div>
+                        <div class="height col-xs-3 rtlText form-inline">
+                            <input id="female" type="radio" name="gender" value="1">مونث</input>
+                        </div>
+                        <p class= "error_notif col-lg-5" id="notification_marriage"></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">نام پدر</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="father_name" id="father_name" placeholder="نام پدر">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">شماره شناسنامه</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="shenasname_number" id="shenasname_number" placeholder="شماره شناسنامه">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">تاریخ تولد</label>
+                        <input type="date" class= "height font_model form-control col-xs-7 rtlText font-model" name="birth_date" id="birth_date" placeholder="25/3/1356">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">مکان تولد</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="birth_location" id="birth_location" placeholder="مکان تولد">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">مکان صدور شناسنامه</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="shenasname_place" id="shenasname_place" placeholder="مکان صدور شناسنامه">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">مذهب</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="religion" id="religion" placeholder="مذهب">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">وضعیت ازدواج</label>
+                        <div class="height col-xs-3 col-xs-push-4 rtlText form-inline">
+                            <input id="married" type="radio" name="marriage" checked value="married">متاهل</input>
+                        </div>
+                        <div class="height col-xs-3 rtlText form-inline">
+                            <input id="single" type="radio" name="marriage" value="single"> مجـرد</input>
+                        </div>
+                        <p class= "error_notif col-lg-5" id="notification_marriage"></p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">وضعیت نظام وظیفه- در صورت ذکور بودن پاسخ دهید</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="nezam_vazife_situation" id="nezam_vazife_situation" placeholder="وضعیت نظام وظیقه">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">کد ملی</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="melli_code" id="melli_code" placeholder="کد ملی">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos"  >وضعیت علمی - آخرین وضعیت تحصیلی</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="elmi_situation" id="elmi_situation" placeholder="وضعیت علمی">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">گروه تدریسی</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="teaching_group" id="teaching_group" placeholder="گروه تدریسی">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">مقطع تحصیلی- که تدریس خواهید کرد</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="teaching_maqtaa" id="teaching_maqtaa" placeholder="مقطع تحصیلی">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">پست الکترونیک</label>
+                        <input type="email" class= "height font_model form-control col-xs-7 rtlText font-model" name="email" id="email" placeholder="پست الکترونیک">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">آدرس محل کار</label>
+                        <textarea rows="4" cols="50" type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="work_address" id="work_address" placeholder="آدرس محل کار"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">آدرس محل زندگی</label>
+                        <textarea rows="4" cols="50" type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="home_address" id="home_address" placeholder="آدرس محل زندگی"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">شماره تلفن منزل</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="tel_home" id="tel_home" placeholder="شماره تلفن خانه">
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">شماره تلفن محل کار</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="tel_work" id="tel_work" placeholder="شماره تلفن محل کار">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">تلفن همراه</label>
+                        <input type="text" class= "height font_model form-control col-xs-7 rtlText font-model" name="mobile" id="mobile" placeholder="تلفن همراه">
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-xs-2 col-xs-push-9 control-label font-model-titr lbl-pos">رمز عبور</label>
+                        <input type="password" class= "height font_model form-control col-xs-7 rtlText font-model" name="password" id="password" placeholder="رمز عبور را وارد کنید">
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <button class="btn btn-primary col-xs-2 col-xs-offset-4 font-model btn-margin" id="register_btn">ثبت نام</button>
+                    <button class="btn btn-warning col-xs-1 font-model btn-margin" id="cancel_button">انصراف</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

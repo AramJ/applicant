@@ -1,14 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: AramJ
+ * User: Najmeh
  * Date: 6/23/14
  * Time: 12:07 AM
  */ ?>
 <script>
     $(document).ready(function(){
         $("#register_page").click(function(){
-            window.location = "<?php //echo base_url();?>index.php/register/";
+            window.location = "<?php echo base_url();?>index.php/register/";
             return false;
         });
         $("#login_btn").click(function(){

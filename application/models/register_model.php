@@ -8,32 +8,34 @@
 
 class Register_model extends CI_Model
 {
-    public static function add_Register($name, $family, $fatherName, $shenasnameNumber, $birthDate, $birthLocation, $shenasnamePlace, $religion, $marriageSituation, $nezamVazifeSituation, $melliCode, $elmiSituation, $teachingGroup , $telHome, $email, $workingAdd, $livingAdd, $telWork, $mobile, $teachingMaqtaa, $con)
+    public static function add_register($gender, $name, $family, $father_name, $shenasname_number, $birth_date, $birth_location, $shenasname_place, $religion, $marriage_situation, $nezam_vazife_situation, $melli_code, $elmi_situation, $teaching_group , $tel_home, $email, $work_address, $home_address, $tel_work, $mobile, $teaching_maqtaa,$password, $con)
     {
-        $result = $con->get('usertb');
-        $pid = $result->num_rows +1;
+
         $data = array(
-            'ID' => $pid,
             'name' => $name,
+            'gender' => $gender,
             'family' => $family,
-            'fatherName' => $fatherName,
-           'shenasnameNumber' => $shenasnameNumber,
-            'birthDate' => $birthDate,
-            'birthLocation' => $birthLocation,
-            'shenasnamePlace' => $shenasnamePlace,
+            'father_name' => $father_name,
+            'shenasname_number' => $shenasname_number,
+            'birth_date' => $birth_date,
+            'birth_location' => $birth_location,
+            'shenasname_place' => $shenasname_place,
             'religion' => $religion,
-            'marriageSituation' => $marriageSituation,
-            'nezamVazifeSituation' => $nezamVazifeSituation,
-            'melliCode' => $melliCode,
-            'elmiSituation' => $elmiSituation,
-            'teachingGroup' => $teachingGroup,
-            'telHome' => $telHome,
+            'marriage_situation' => $marriage_situation,
+            'nezam_vazife_situation' => $nezam_vazife_situation,
+            'melli_code' => $melli_code,
+            'elmi_situation' => $elmi_situation,
+            'teaching_group' => $teaching_group,
+            'tel_home' => $tel_home,
             'email' => $email,
-            'workingAdd' => $workingAdd,
-            'livingAdd' => $livingAdd,
-            'telWork' => $telWork,
+            'work_address' => $work_address,
+            'home_address' => $home_address,
+            'tel_work' => $tel_work,
             'mobile' => $mobile,
-            'teachingMaqtaa' => $teachingMaqtaa,
+            'teaching_maqtaa' => $teaching_maqtaa,
+            'password' => $password,
+            'admin_user' => 0,
+            'is_approved' => 0
 
         );
         $con->insert('usertb',$data);

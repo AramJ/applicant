@@ -452,3 +452,16 @@ th
     color: #A70000;
     margin-top: -30px;
 }
+.lbl-pos
+{
+    margin-top: 15px;
+}
+.mrg-border
+{
+    margin-left: 200px;
+    margin-right: 200px;
+}
+#cansel_button
+{
+    margin-right: 500px;
+}
